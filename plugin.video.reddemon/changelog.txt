@@ -1,0 +1,7 @@
+[1.0.0] - 2026-07-09
+Initial release
+- Sign in with your YouTube account using Google's device sign-in flow (no typing passwords into Kodi)
+- Browse your own YouTube playlists
+- Browse videos within each playlist, with pagination for large playlists
+- Playback is delegated to the official YouTube addon (plugin.video.youtube) for reliable, up-to-date video streaming
+- Sign out option available from the main menu
