@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<settings version="1">
+    <section id="plugin.video.reddemon">
+        <category id="account" label="30000">
+            <group id="1" label="30001">
+                <setting id="client_id" type="string" label="30002">
+                    <level>0</level>
+                    <default></default>
+                    <control type="edit" format="string"/>
+                </setting>
+                <setting id="client_secret" type="string" label="30003">
+                    <level>0</level>
+                    <default></default>
+                    <control type="edit" format="string"/>
+                </setting>
+                <setting id="refresh_token" type="string" label="30005">
+                    <level>0</level>
+                    <default></default>
+                    <control type="edit" format="string"/>
+                </setting>
+                <setting id="signed_in_account" type="string" label="30006">
+                    <level>0</level>
+                    <default></default>
+                    <control type="edit" format="string"/>
+                </setting>
+            </group>
+        </category>
+        <category id="display" label="30007">
+            <group id="1" label="30008">
+                <setting id="playlist_page_size" type="integer" label="30009">
+                    <level>0</level>
+                    <default>50</default>
+                    <constraints>
+                        <minimum>10</minimum>
+                        <maximum>50</maximum>
+                    </constraints>
+                    <control type="edit" format="integer"/>
+                </setting>
+                <setting id="enable_debug" type="boolean" label="30010">
+                    <level>0</level>
+                    <default>false</default>
+                    <control type="toggle"/>
+                </setting>
+            </group>
+        </category>
+    </section>
+</settings>
