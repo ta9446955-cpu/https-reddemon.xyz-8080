@@ -1,0 +1,50 @@
+[1.1.1] - 2026-07-16
+Fixed
+- URGENT: 1.1.0's broadened sign-in scope was rejected by Google's device sign-in flow entirely ("invalid_scope"), which broke sign-in completely - not just the new features. Reverted to the working read-only scope.
+Removed
+- "Create New Playlist" and "Add to Playlist" - these require write access that Google does not allow through this sign-in method (the "enter this code" flow), so they cannot work here. Sign-in, playlist browsing, playback, Search This Playlist, and Search YouTube are all unaffected and fully working, since those only need read access.
+Note
+- If you updated to 1.1.0 and hit a sign-in error, Sign Out and Sign In again after installing this version to get a working session.
+
+[1.1.0] - 2026-07-11
+Added
+- Search This Playlist - find a specific video quickly within a large playlist instead of scrolling.
+- Search YouTube - search all of YouTube from within the addon, not just your own playlists.
+- Create New Playlist - make a new playlist (private/unlisted/public) right from the main menu.
+- Add to Playlist - long-press/context-menu on any video (from search results or playlist browsing) to add it to an existing playlist or a brand new one on the spot.
+Changed
+- IMPORTANT: sign-in permission scope upgraded from read-only to read/write, required for the new playlist creation and editing features. If you were already signed in, you'll need to Sign Out and Sign In again to grant the new permission - your old sign-in won't have access to the new features until you do.
+
+[1.0.7] - 2026-07-11
+Added
+- New "Enter Your Own API Credentials" option on the main menu, letting anyone type in their own Client ID/Secret via a simple popup - no need for the Settings screen at all. This matters because the built-in credentials belong to the addon's original developer; other people installing this addon should use their own to avoid sharing API quota.
+Confirmed
+- Sign-in and playlist browsing fully working end-to-end.
+
+[1.0.6] - 2026-07-10
+Fixed
+- Found the real cause of the persistent "invalid_client" sign-in error: Reddemon was auto-detecting and silently using the YouTube addon's own saved API keys before ever trying the built-in ones - and those saved keys were the wrong OAuth client type for this sign-in flow. Removed that auto-detection entirely. Reddemon now always uses your own entered credentials if set, otherwise the built-in ones - never silently borrows from the YouTube addon anymore.
+
+[1.0.5] - 2026-07-10
+Added
+- Built-in API credentials (Client ID and Client Secret) that work immediately with no setup at all. Reddemon still checks for your own credentials or the YouTube addon's credentials first, but now always falls back to a working default if neither is set.
+
+[1.0.3] - 2026-07-10
+Added
+- Reddemon now automatically checks the official YouTube addon's own API credentials (Client ID / Client Secret) if you haven't entered your own in Reddemon's Settings. If you already have the YouTube addon working, you likely don't need to enter anything at all - just try Sign In directly from the main menu.
+
+[1.0.2] - 2026-07-10
+Fixed
+- The Account settings category (with Client ID and Client Secret) was not appearing on some Kodi devices at all, even though it was correctly defined. Simplified the settings structure - Account now uses a single group instead of two, matching the pattern of the working Display category. This should resolve the missing fields.
+
+[1.0.1] - 2026-07-09
+Fixed
+- The Account settings category (Client ID, Client Secret, Sign-In Status) wasn't showing up at all in the Settings screen - only Display was visible. Caused by an invalid <hidden> element used to try to mask password input, which isn't valid Kodi schema and was breaking the whole category. Removed it; fields are now plain visible text, but Settings works correctly.
+
+[1.0.0] - 2026-07-09
+Initial release
+- Sign in with your YouTube account using Google's device sign-in flow (no typing passwords into Kodi)
+- Browse your own YouTube playlists
+- Browse videos within each playlist, with pagination for large playlists
+- Playback is delegated to the official YouTube addon (plugin.video.youtube) for reliable, up-to-date video streaming
+- Sign out option available from the main menu
